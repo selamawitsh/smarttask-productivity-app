@@ -1,9 +1,7 @@
-from django.urls import path
-from . import views
+from django.urls import path, include
+from tasks import views  # import views for home
 
 urlpatterns = [
-    path('', views.home, name='home'),
-    path('about/', views.about, name='about'),
-    path('tasks/', views.task_list, name='task_list'),
-    path('tasks/<int:task_id>/', views.task_detail, name='task_detail'),
+    path('', views.home, name='home'),  # root URL
+    path('tasks/', include('tasks.urls')),  # tasks list
 ]
